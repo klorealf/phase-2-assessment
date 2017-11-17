@@ -1,0 +1,12 @@
+<ul>
+<h1> Current Auctions </h1>
+
+  <% Item.all.each do |item| %>
+    <% if item.end_time > Time.now %>
+      <a href="/items/<%= item.id %>"><li><%= item.name %></li></a>
+    <% end %>
+  <% end %>
+</ul>
+
+
+

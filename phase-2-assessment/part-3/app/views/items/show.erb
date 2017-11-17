@@ -1,0 +1,42 @@
+<ul>
+<h2><%= @item.name %></h2>
+
+Description:
+<br>
+<%= @item.description %>
+<br><br><br>
+
+Condition:
+<br>
+<%= @item.condition %>
+<br><br><br>
+
+Auction ends on <%= date(@item.end_time) %> at <%= time(@item.end_time) %>.
+<br><br>
+
+<h3> Bidding  </h3>
+
+ Number of bidders: <%= @item.bids.length %>
+  <% if session_user %>
+    <br><br>
+    Place a bid for this item:
+    <% if @bid && @bid.errors.any? %>
+
+      <ul>
+      <% @bid.errors.full_messages.each do |error| %>
+        <%= error %>
+      <% end %>
+      </ul>
+    <% end %>
+      <form action="/bids/new" method="post">
+        <input type="hidden" name="bid[item_id]" value=<%= @item.id %>>
+        <input type="hidden" name="bid[user_id]" value=<%= session_user_id %>>
+
+        <input type="text" name="bid[price]">
+        <input type="submit" value="Place Bid">
+      </form>
+
+  <% end %>
+</ul>
+ <br><br>
+

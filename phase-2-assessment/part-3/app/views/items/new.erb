@@ -1,0 +1,51 @@
+<% if @item && @item.errors.any? %>
+<ul>
+  <% @item.errors.full_messages.each do |error| %>
+    <li> <%= error %> </li>
+  <% end %>
+</ul>
+<% end %>
+
+<h2>List Item </h2>
+
+<div class="auction-form">
+
+<form action="/items" method="post">
+  <input type="hidden" name="item[user_id]" value="<%= session_user.id %>">
+
+  Item Name:
+  <input type="text" name="item[name]" >
+
+  <br>  <br>
+
+  Condition:
+  <select name="item[condition]">
+    <option value="new">New</option>
+    <option value="gently">Gently Used</option>
+    <option value="fair">Fair</option>
+    <option value="old">Old</option>
+  </select>
+
+  <br>  <br>
+
+  Start At:
+  <input type="text" name="item[start_time]">
+  <br><br>
+
+  Ends At:
+  <input type="text" name="item[end_time]">
+
+  <br> <br>
+  Description:
+  <textarea rows="4" cols="50" type="text" name="item[description]"></textarea>
+
+  <br><br>
+  <input type="submit" value="List Item for Auction">
+</form>
+</div>
+
+
+
+
+
+

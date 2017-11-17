@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <ul>
+    <a href="/"><h1> DBC Auction! </h1></a>
+
+
+    <% if @error %>
+        <%= @error %>
+    <% end %>
+
+  <center>
+      <% if session[:user_id] %>
+      <a href="/users/<%= session_user.id %>"><%= session_user.username %></a>
+        <%= erb :"/sessions/_logout_form" %>
+      <% else %>
+      <a href="/sessions/new"> Login </a> |  <a href="/users/new"> Register </a>
+      <% end %>
+  </center>
+  </ul>
+  <%= yield %>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<ul>
+<h1> Welcome, <%= @user.username %></h1>
+
+<br>
+
+<h2> Your Auctions </h2>
+ <center> <a href="/items/new"> + add an auction</a></center>
+<% if @user.items.empty? %>
+  <br><br>
+  You have no items listed.
+<% else %>
+
+    <% @user.items.each do |item| %>
+    <li>
+      <h4><%= item.name %></h4>
+
+      <a href="/items/<%= item.id %>/edit"> Edit </a>
+
+      <form action="/items/<%= item.id %>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="Delete">
+      </form>
+    </li>
+    <br>
+    <% end %>
+  </ul>
+<% end %>
+
+

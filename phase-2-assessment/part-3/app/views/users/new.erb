@@ -1,0 +1,19 @@
+<% if @user && @user.errors.any? %>
+<ul>
+  <% @user.errors.full_messages.each do |error| %>
+  <li class="errors"><%= error %> </li>
+  <% end %>
+</ul>
+<% end %>
+
+<form action="/users" method="POST">
+  <br><br>
+  Email:
+  <input type="text" name="user[email]">
+  Username:
+  <input type="text" name="user[username]">
+  Password:
+  <input type="text" name="user[password]">
+  <br><br>
+  <input type="submit" value="Register User">
+</form>
